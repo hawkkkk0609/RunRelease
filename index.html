@@ -15,7 +15,7 @@
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             line-height: 1.6;
             color: #1a1a1a;
-            background: #000;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             overflow-x: hidden;
         }
         
@@ -51,9 +51,9 @@
         .logo {
             font-size: 4rem;
             font-weight: 900;
-            color: white;
+            color: #1a1a1a;
             margin-bottom: 20px;
-            text-shadow: 0 4px 20px rgba(0,0,0,0.3);
+            text-shadow: 0 4px 20px rgba(0,0,0,0.1);
             animation: float 3s ease-in-out infinite;
         }
         
@@ -64,19 +64,31 @@
         
         .tagline {
             font-size: 1.4rem;
-            color: rgba(255,255,255,0.95);
-            margin-bottom: 30px;
-            font-weight: 300;
+            color: #1a1a1a;
+            margin-bottom: 15px;
+            font-weight: 600;
             letter-spacing: 0.5px;
         }
         
         .subtitle {
             font-size: 1.1rem;
-            color: rgba(255,255,255,0.8);
-            margin-bottom: 40px;
+            color: #333;
+            margin-bottom: 30px;
             max-width: 600px;
             margin-left: auto;
             margin-right: auto;
+        }
+        
+        .app-store-badge {
+            display: inline-block;
+            background: #1a1a1a;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 25px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-top: 20px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
         }
         
         .scroll-indicator {
@@ -84,7 +96,7 @@
             bottom: 30px;
             left: 50%;
             transform: translateX(-50%);
-            color: white;
+            color: #1a1a1a;
             font-size: 2rem;
             animation: bounce 2s infinite;
         }
@@ -104,6 +116,7 @@
         .section {
             padding: 100px 0;
             position: relative;
+            background: white;
         }
         
         .section:nth-child(even) {
@@ -115,10 +128,7 @@
             font-weight: 800;
             text-align: center;
             margin-bottom: 20px;
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            color: #1a1a1a;
         }
         
         .section-subtitle {
@@ -243,7 +253,7 @@
         }
         
         .tech-section {
-            background: linear-gradient(135deg, #1a1a1a, #2d2d2d);
+            background: linear-gradient(135deg, #667eea, #764ba2);
             color: white;
             padding: 100px 0;
         }
@@ -264,13 +274,13 @@
         }
         
         .tech-card h3 {
-            color: #667eea;
+            color: white;
             margin-bottom: 15px;
             font-size: 1.3rem;
         }
         
         .tech-card p {
-            color: rgba(255,255,255,0.8);
+            color: rgba(255,255,255,0.9);
             line-height: 1.6;
         }
         
@@ -347,9 +357,10 @@
 <body>
     <div class="hero">
         <div class="hero-content">
-            <div class="logo">��‍♂️ RunRelease</div>
+            <div class="logo">RunRelease</div>
             <div class="tagline">Transform Your Phone Habits Through Activity</div>
-            <div class="subtitle">Unlock your favorite apps only after completing GPS-tracked runs. Build healthier habits with intelligent app management powered by Apple's Family Controls API.</div>
+            <div class="subtitle">Unlock your favorite apps only after completing GPS-tracked runs. Build healthier habits with intelligent app management.</div>
+            <div class="app-store-badge">In App Stores Soon</div>
         </div>
         <div class="scroll-indicator">⬇</div>
     </div>
@@ -357,7 +368,7 @@
     <div class="container">
         <section class="section">
             <h2 class="section-title">Revolutionary App Management</h2>
-            <p class="section-subtitle">RunRelease combines cutting-edge GPS tracking with Apple's Family Controls API to create a seamless, system-level app management experience that promotes physical activity.</p>
+            <p class="section-subtitle">RunRelease combines cutting-edge GPS tracking with smart app management to create a seamless experience that promotes physical activity.</p>
             
             <div class="feature-grid">
                 <div class="feature-card">
@@ -367,8 +378,8 @@
                 </div>
                 <div class="feature-card">
                     <span class="feature-icon">📱</span>
-                    <h3>System-Level Control</h3>
-                    <p>Leverage Apple's Family Controls API for seamless app management that integrates natively with iOS Screen Time features.</p>
+                    <h3>Smart App Control</h3>
+                    <p>Seamlessly manage which apps to lock and unlock based on your activity, integrating with your phone's built-in features.</p>
                 </div>
                 <div class="feature-card">
                     <span class="feature-icon">📍</span>
@@ -418,32 +429,32 @@
         
         <section class="tech-section">
             <div class="container">
-                <h2 class="section-title" style="color: white;">Technical Excellence</h2>
-                <p class="section-subtitle" style="color: rgba(255,255,255,0.8);">Built with cutting-edge iOS technologies and Apple's latest APIs for optimal performance and user experience.</p>
+                <h2 class="section-title" style="color: white;">Built for Excellence</h2>
+                <p class="section-subtitle" style="color: rgba(255,255,255,0.8);">RunRelease is built with the latest iOS technologies for optimal performance and user experience.</p>
                 
                 <div class="tech-grid">
                     <div class="tech-card">
-                        <h3>Family Controls API</h3>
-                        <p>System-level app management using Apple's Family Controls framework for seamless integration with iOS Screen Time features.</p>
+                        <h3>Smart App Management</h3>
+                        <p>Intelligent system that locks and unlocks apps based on your activity, helping you build better phone habits.</p>
                     </div>
                     <div class="tech-card">
-                        <h3>Core Location</h3>
-                        <p>Advanced GPS tracking with background location updates, ensuring accurate run tracking even when the app is minimized.</p>
+                        <h3>Advanced GPS</h3>
+                        <p>Precise location tracking that works even when the app is in the background, ensuring accurate run tracking.</p>
                     </div>
                     <div class="tech-card">
-                        <h3>SwiftUI</h3>
-                        <p>Modern declarative UI framework for fluid animations, responsive design, and native iOS feel.</p>
+                        <h3>Modern Interface</h3>
+                        <p>Smooth animations and responsive design that feels native to iOS, providing an intuitive user experience.</p>
                     </div>
                     <div class="tech-card">
                         <h3>Privacy First</h3>
-                        <p>All user data stored locally on device. No cloud storage required. Complete privacy and security.</p>
+                        <p>All your data stays on your device. No cloud storage required. Complete privacy and security.</p>
                     </div>
                 </div>
             </div>
         </section>
         
         <section class="section">
-            <h2 class="section-title">Key Features</h2>
+            <h2 class="section-title">Why Choose RunRelease</h2>
             <div class="stats">
                 <div class="stat">
                     <div class="stat-number">100%</div>
@@ -469,13 +480,13 @@
         <div class="container">
             <h2 class="cta-title">Ready to Transform Your Habits?</h2>
             <p class="cta-subtitle">Join the revolution in digital wellness with RunRelease</p>
-            <a href="mailto:your-email@example.com" class="btn">Contact Developer</a>
+            <a href="leehoklam0609@gmail.com" class="btn">Contact Developer</a>
         </div>
     </section>
     
     <footer class="footer">
         <div class="container">
-            <p>&copy; 2024 RunRelease. Built with ❤️ using Apple's Family Controls API.</p>
+            <p>&copy; 2024 RunRelease. Built with ❤️ for better digital habits.</p>
         </div>
     </footer>
 </body>
