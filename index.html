@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RunRelease - Unlock Apps Through Activity</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .logo {
+            font-size: 3rem;
+            font-weight: bold;
+            color: white;
+            margin-bottom: 10px;
+        }
+        
+        .tagline {
+            font-size: 1.2rem;
+            color: rgba(255,255,255,0.9);
+            margin-bottom: 20px;
+        }
+        
+        .card {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin: 40px 0;
+        }
+        
+        .feature {
+            text-align: center;
+            padding: 30px 20px;
+            background: #f8f9fa;
+            border-radius: 15px;
+            border: 2px solid #e9ecef;
+        }
+        
+        .feature-icon {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+        
+        .feature h3 {
+            margin-bottom: 10px;
+            color: #495057;
+        }
+        
+        .feature p {
+            color: #6c757d;
+            font-size: 0.9rem;
+        }
+        
+        .cta {
+            text-align: center;
+            margin-top: 40px;
+        }
+        
+        .btn {
+            display: inline-block;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            padding: 15px 30px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: transform 0.2s;
+        }
+        
+        .btn:hover {
+            transform: translateY(-2px);
+        }
+        
+        .screenshots {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 40px 0;
+        }
+        
+        .screenshot {
+            background: #f8f9fa;
+            border-radius: 15px;
+            padding: 20px;
+            text-align: center;
+            border: 2px solid #e9ecef;
+        }
+        
+        .screenshot-placeholder {
+            width: 100%;
+            height: 300px;
+            background: linear-gradient(45deg, #e9ecef, #dee2e6);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #6c757d;
+            font-size: 0.9rem;
+        }
+        
+        @media (max-width: 600px) {
+            .container {
+                padding: 20px 15px;
+            }
+            
+            .logo {
+                font-size: 2rem;
+            }
+            
+            .card {
+                padding: 25px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="logo">��‍♂️ RunRelease</div>
+            <div class="tagline">Transform your phone habits through physical activity</div>
+        </div>
+        
+        <div class="card">
+            <h2 style="text-align: center; margin-bottom: 30px; color: #495057;">About RunRelease</h2>
+            <p style="text-align: center; font-size: 1.1rem; color: #6c757d; margin-bottom: 30px;">
+                RunRelease is an innovative iOS app that helps users build healthier phone habits by unlocking selected apps only after completing GPS-tracked runs. The app uses Apple's Family Controls API to provide a seamless, system-level app management experience.
+            </p>
+            
+            <div class="feature-grid">
+                <div class="feature">
+                    <div class="feature-icon">🎯</div>
+                    <h3>Smart Scheduling</h3>
+                    <p>Set custom running schedules with flexible time windows and distance goals</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">📱</div>
+                    <h3>App Management</h3>
+                    <p>Choose which apps to lock during scheduled times using Family Controls</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">📍</div>
+                    <h3>GPS Tracking</h3>
+                    <p>Accurate GPS tracking ensures genuine physical activity</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">🔓</div>
+                    <h3>Automatic Unlock</h3>
+                    <p>Apps automatically unlock when you complete your running goal</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="card">
+            <h2 style="text-align: center; margin-bottom: 30px; color: #495057;">Key Features</h2>
+            <ul style="list-style: none; padding: 0;">
+                <li style="padding: 10px 0; border-bottom: 1px solid #e9ecef;">✅ <strong>Family Controls Integration:</strong> System-level app management using Apple's Family Controls API</li>
+                <li style="padding: 10px 0; border-bottom: 1px solid #e9ecef;">✅ <strong>GPS Run Tracking:</strong> Real-time location tracking with route visualization</li>
+                <li style="padding: 10px 0; border-bottom: 1px solid #e9ecef;">✅ <strong>Flexible Scheduling:</strong> Custom distance goals, time windows, and active days</li>
+                <li style="padding: 10px 0; border-bottom: 1px solid #e9ecef;">✅ <strong>Emergency Unlock:</strong> Safety feature for urgent app access</li>
+                <li style="padding: 10px 0; border-bottom: 1px solid #e9ecef;">✅ <strong>Modern UI:</strong> Beautiful, intuitive interface with card-based design</li>
+                <li style="padding: 10px 0;">✅ <strong>Privacy Focused:</strong> All data stays on device, no cloud storage required</li>
+            </ul>
+        </div>
+        
+        <div class="card">
+            <h2 style="text-align: center; margin-bottom: 30px; color: #495057;">App Screenshots</h2>
+            <div class="screenshots">
+                <div class="screenshot">
+                    <div class="screenshot-placeholder">Home Screen</div>
+                </div>
+                <div class="screenshot">
+                    <div class="screenshot-placeholder">Run Tracker</div>
+                </div>
+                <div class="screenshot">
+                    <div class="screenshot-placeholder">App Management</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="card">
+            <h2 style="text-align: center; margin-bottom: 30px; color: #495057;">Technical Implementation</h2>
+            <p style="margin-bottom: 20px; color: #6c757d;">
+                <strong>Family Controls API:</strong> The app leverages Apple's Family Controls framework to provide system-level app management. This allows RunRelease to lock and unlock apps based on user activity, providing a seamless experience that integrates with iOS's built-in Screen Time features.
+            </p>
+            <p style="margin-bottom: 20px; color: #6c757d;">
+                <strong>GPS Tracking:</strong> Uses Core Location for accurate run tracking, ensuring users complete genuine physical activity before unlocking their selected apps.
+            </p>
+            <p style="color: #6c757d;">
+                <strong>Privacy & Security:</strong> All user data is stored locally on the device. The app requires Family Controls entitlement approval from Apple to ensure proper system integration and user safety.
+            </p>
+        </div>
+        
+        <div class="cta">
+            <a href="mailto:leehoklam0609@gmail.com" class="btn">Contact Developer</a>
+        </div>
+    </div>
+</body>
+</html>
