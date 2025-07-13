@@ -1,56 +1,194 @@
-        }
-    </script>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>RunRelease – Unlock Apps Through Activity</title>
+  <style>
+    html, body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      min-height: 100vh;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: #18181b;
+      margin: 0;
+      padding: 0;
+    }
+    .container {
+      max-width: 480px;
+      margin: 0 auto;
+      padding: 32px 16px 64px 16px;
+    }
+    .header {
+      text-align: center;
+      margin-bottom: 32px;
+    }
+    .logo {
+      font-size: 2.7rem;
+      font-weight: 900;
+      letter-spacing: -1px;
+      color: #18181b;
+      margin-bottom: 8px;
+    }
+    .tagline {
+      font-size: 1.1rem;
+      color: #22223b;
+      font-weight: 500;
+      margin-bottom: 8px;
+    }
+    .badge {
+      display: inline-block;
+      background: #18181b;
+      color: #fff;
+      font-size: 0.95rem;
+      font-weight: 600;
+      border-radius: 20px;
+      padding: 7px 18px;
+      margin-top: 10px;
+      margin-bottom: 10px;
+      letter-spacing: 0.5px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    }
+    .card {
+      background: #fff;
+      border-radius: 22px;
+      box-shadow: 0 8px 32px rgba(60,60,100,0.08);
+      padding: 32px 24px;
+      margin-bottom: 32px;
+      border: 1px solid #e0e7ff;
+    }
+    .guide-title {
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: #18181b;
+      margin-bottom: 18px;
+      text-align: center;
+    }
+    .guide-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      counter-reset: step;
+    }
+    .guide-list li {
+      counter-increment: step;
+      margin-bottom: 22px;
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+    }
+    .guide-step {
+      min-width: 36px;
+      min-height: 36px;
+      background: linear-gradient(135deg, #667eea 60%, #764ba2 100%);
+      color: #fff;
+      font-weight: 700;
+      font-size: 1.1rem;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 2px 8px rgba(60,60,100,0.10);
+      margin-right: 8px;
+      flex-shrink: 0;
+    }
+    .guide-text {
+      font-size: 1.05rem;
+      color: #22223b;
+      font-weight: 500;
+      line-height: 1.5;
+    }
+    .cta-section {
+      text-align: center;
+      margin-top: 40px;
+    }
+    .cta-title {
+      font-size: 1.3rem;
+      font-weight: 700;
+      margin-bottom: 10px;
+      color: #18181b;
+    }
+    .cta-btn {
+      display: inline-block;
+      background: linear-gradient(90deg, #667eea, #764ba2);
+      color: #fff;
+      font-weight: 700;
+      font-size: 1.05rem;
+      border-radius: 24px;
+      padding: 13px 36px;
+      text-decoration: none;
+      margin-top: 18px;
+      box-shadow: 0 2px 12px rgba(60,60,100,0.10);
+      transition: background 0.2s, transform 0.2s;
+    }
+    .cta-btn:hover {
+      background: linear-gradient(90deg, #764ba2, #667eea);
+      transform: translateY(-2px) scale(1.03);
+    }
+    .footer {
+      text-align: center;
+      color: #22223b;
+      font-size: 0.95rem;
+      opacity: 0.7;
+      margin-top: 60px;
+      margin-bottom: 20px;
+    }
+    @media (max-width: 600px) {
+      .container { padding: 18px 4vw 40px 4vw; }
+      .card { padding: 20px 10px; }
+      .logo { font-size: 2rem; }
+      .guide-title { font-size: 1.1rem; }
+      .cta-title { font-size: 1.1rem; }
+    }
+  </style>
 </head>
-<body class="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 flex flex-col items-center justify-start py-8">
-    <div class="w-full max-w-xl px-4">
-        <!-- Header -->
-        <div class="text-center mb-8">
-            <h1 class="text-4xl font-bold text-gray-900 mb-2">RunRelease</h1>
-            <p class="text-lg text-gray-600">Unlock your favorite apps by completing a run</p>
-        </div>
-
-        <!-- Quick Guide Card -->
-        <div class="bg-white rounded-2xl shadow-lg p-6 mb-8 border border-blue-100">
-            <div class="flex items-center gap-2 mb-4">
-                <svg class="h-6 w-6 text-blue-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13 16h-1v-4h-1m1-4h.01M12 20.5C6.201 20.5 1 15.299 1 9.5S6.201-1.5 12-1.5 23 4.701 23 10.5 17.799 20.5 12 20.5z"/></svg>
-                <h2 class="text-xl font-semibold text-blue-700">How to Use RunRelease</h2>
-            </div>
-            <ol class="list-decimal list-inside space-y-3 text-gray-800 text-base">
-                <li><span class="font-semibold text-blue-700">Select apps</span> you want to lock until you finish your run.</li>
-                <li><span class="font-semibold text-blue-700">Set your daily running goal</span> (distance or destination).</li>
-                <li><span class="font-semibold text-blue-700">Start your run</span> and let RunRelease track your progress via GPS.</li>
-                <li><span class="font-semibold text-blue-700">Stay motivated</span>—locked apps remain inaccessible until you complete your goal.</li>
-                <li><span class="font-semibold text-blue-700">Finish your run</span> to instantly unlock your selected apps.</li>
-                <li><span class="font-semibold text-blue-700">Emergency access</span> is always available for essential apps and limited PIN unlocks.</li>
-            </ol>
-        </div>
-
-        <!-- Features Card -->
-        <div class="bg-white rounded-2xl shadow-lg p-6 mb-8 border border-indigo-100">
-            <div class="flex items-center gap-2 mb-4">
-                <svg class="h-6 w-6 text-indigo-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 17v-2a4 4 0 014-4h3m4 0a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-                <h2 class="text-xl font-semibold text-indigo-700">Why RunRelease?</h2>
-            </div>
-            <ul class="space-y-2 text-gray-800 text-base">
-                <li>🔒 <span class="font-semibold">Real motivation</span>: Apps stay locked until you move.</li>
-                <li>📍 <span class="font-semibold">GPS tracking</span>: Accurate, privacy-first run tracking.</li>
-                <li>⚡ <span class="font-semibold">Emergency access</span>: Calls, messages, and maps always available.</li>
-                <li>🎯 <span class="font-semibold">Custom goals</span>: Set your own distance or destination.</li>
-                <li>🛡️ <span class="font-semibold">Safe & simple</span>: Designed for all ages, no technical jargon.</li>
-            </ul>
-        </div>
-
-        <!-- Call to Action Card -->
-        <div class="bg-gradient-to-r from-blue-600 to-indigo-600 rounded-2xl shadow-lg p-6 text-center mb-8">
-            <h2 class="text-2xl font-bold text-white mb-2">Ready to unlock your potential?</h2>
-            <p class="text-white mb-4">Download RunRelease and make every run count!</p>
-            <a href="#" class="inline-block bg-white text-blue-700 font-semibold px-6 py-2 rounded-lg shadow hover:bg-blue-50 transition">Get the App</a>
-        </div>
-
-        <!-- Footer -->
-        <footer class="text-center text-gray-400 text-sm mt-8">
-            &copy; 2024 RunRelease. All rights reserved.
-        </footer>
+<body>
+  <div class="container">
+    <div class="header">
+      <div class="logo">RunRelease</div>
+      <div class="tagline">Unlock apps through activity</div>
+      <div class="badge">In App Stores Soon</div>
     </div>
+    <div class="card">
+      <div class="guide-title">How RunRelease Works</div>
+      <ul class="guide-list">
+        <li>
+          <div class="guide-step">1</div>
+          <div class="guide-text">Set your running schedule: choose your distance, time window, and active days.</div>
+        </li>
+        <li>
+          <div class="guide-step">2</div>
+          <div class="guide-text">Select which apps you want to lock until you complete your run.</div>
+        </li>
+        <li>
+          <div class="guide-step">3</div>
+          <div class="guide-text">When the lock window starts, your selected apps are locked automatically.</div>
+        </li>
+        <li>
+          <div class="guide-step">4</div>
+          <div class="guide-text">Start your run: track your distance and route with GPS.</div>
+        </li>
+        <li>
+          <div class="guide-step">5</div>
+          <div class="guide-text">Once you reach your goal, your apps unlock instantly.</div>
+        </li>
+        <li>
+          <div class="guide-step">6</div>
+          <div class="guide-text">Emergency unlock is always available for safety.</div>
+        </li>
+      </ul>
+    </div>
+    <div class="cta-section">
+      <div class="cta-title">Ready to build better habits?</div>
+      <a href="mailto:your-email@example.com" class="cta-btn">Contact Developer</a>
+    </div>
+    <div class="footer">
+      &copy; 2024 RunRelease. All rights reserved.
+    </div>
+  </div>
 </body>
 </html>
