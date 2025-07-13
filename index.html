@@ -1,493 +1,56 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RunRelease - Unlock Apps Through Activity</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
         }
-        
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            line-height: 1.6;
-            color: #1a1a1a;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            overflow-x: hidden;
-        }
-        
-        .hero {
-            min-height: 100vh;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="50" cy="50" r="1" fill="white" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
-            opacity: 0.3;
-        }
-        
-        .hero-content {
-            text-align: center;
-            z-index: 2;
-            position: relative;
-            max-width: 800px;
-            padding: 0 20px;
-        }
-        
-        .logo {
-            font-size: 4rem;
-            font-weight: 900;
-            color: #1a1a1a;
-            margin-bottom: 20px;
-            text-shadow: 0 4px 20px rgba(0,0,0,0.1);
-            animation: float 3s ease-in-out infinite;
-        }
-        
-        @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
-        }
-        
-        .tagline {
-            font-size: 1.4rem;
-            color: #1a1a1a;
-            margin-bottom: 15px;
-            font-weight: 600;
-            letter-spacing: 0.5px;
-        }
-        
-        .subtitle {
-            font-size: 1.1rem;
-            color: #333;
-            margin-bottom: 30px;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-        
-        .app-store-badge {
-            display: inline-block;
-            background: #1a1a1a;
-            color: white;
-            padding: 12px 24px;
-            border-radius: 25px;
-            font-weight: 600;
-            font-size: 0.9rem;
-            margin-top: 20px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-        }
-        
-        .scroll-indicator {
-            position: absolute;
-            bottom: 30px;
-            left: 50%;
-            transform: translateX(-50%);
-            color: #1a1a1a;
-            font-size: 2rem;
-            animation: bounce 2s infinite;
-        }
-        
-        @keyframes bounce {
-            0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
-            40% { transform: translateX(-50%) translateY(-10px); }
-            60% { transform: translateX(-50%) translateY(-5px); }
-        }
-        
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-        
-        .section {
-            padding: 100px 0;
-            position: relative;
-            background: white;
-        }
-        
-        .section:nth-child(even) {
-            background: #f8f9fa;
-        }
-        
-        .section-title {
-            font-size: 3rem;
-            font-weight: 800;
-            text-align: center;
-            margin-bottom: 20px;
-            color: #1a1a1a;
-        }
-        
-        .section-subtitle {
-            text-align: center;
-            font-size: 1.2rem;
-            color: #6c757d;
-            margin-bottom: 60px;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-        
-        .feature-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 40px;
-            margin: 60px 0;
-        }
-        
-        .feature-card {
-            background: white;
-            border-radius: 20px;
-            padding: 40px 30px;
-            text-align: center;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
-            transition: all 0.3s ease;
-            border: 1px solid rgba(0,0,0,0.05);
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .feature-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background: linear-gradient(90deg, #667eea, #764ba2);
-        }
-        
-        .feature-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 30px 60px rgba(0,0,0,0.15);
-        }
-        
-        .feature-icon {
-            font-size: 3rem;
-            margin-bottom: 20px;
-            display: block;
-        }
-        
-        .feature-card h3 {
-            font-size: 1.5rem;
-            font-weight: 700;
-            margin-bottom: 15px;
-            color: #1a1a1a;
-        }
-        
-        .feature-card p {
-            color: #6c757d;
-            line-height: 1.7;
-        }
-        
-        .stats {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 30px;
-            margin: 60px 0;
-        }
-        
-        .stat {
-            text-align: center;
-            padding: 30px;
-        }
-        
-        .stat-number {
-            font-size: 3rem;
-            font-weight: 900;
-            color: #667eea;
-            margin-bottom: 10px;
-        }
-        
-        .stat-label {
-            font-size: 1.1rem;
-            color: #6c757d;
-            font-weight: 500;
-        }
-        
-        .screenshots {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            margin: 60px 0;
-        }
-        
-        .screenshot-card {
-            background: white;
-            border-radius: 20px;
-            padding: 30px;
-            text-align: center;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
-            transition: transform 0.3s ease;
-        }
-        
-        .screenshot-card:hover {
-            transform: scale(1.05);
-        }
-        
-        .screenshot-placeholder {
-            width: 100%;
-            height: 400px;
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            border-radius: 15px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 1.2rem;
-            font-weight: 600;
-            margin-bottom: 20px;
-        }
-        
-        .tech-section {
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            color: white;
-            padding: 100px 0;
-        }
-        
-        .tech-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-            margin: 60px 0;
-        }
-        
-        .tech-card {
-            background: rgba(255,255,255,0.1);
-            border-radius: 15px;
-            padding: 30px;
-            border: 1px solid rgba(255,255,255,0.2);
-            backdrop-filter: blur(10px);
-        }
-        
-        .tech-card h3 {
-            color: white;
-            margin-bottom: 15px;
-            font-size: 1.3rem;
-        }
-        
-        .tech-card p {
-            color: rgba(255,255,255,0.9);
-            line-height: 1.6;
-        }
-        
-        .cta-section {
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            color: white;
-            text-align: center;
-            padding: 100px 0;
-        }
-        
-        .cta-title {
-            font-size: 3rem;
-            font-weight: 800;
-            margin-bottom: 20px;
-        }
-        
-        .cta-subtitle {
-            font-size: 1.2rem;
-            margin-bottom: 40px;
-            opacity: 0.9;
-        }
-        
-        .btn {
-            display: inline-block;
-            background: white;
-            color: #667eea;
-            padding: 18px 40px;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 700;
-            font-size: 1.1rem;
-            transition: all 0.3s ease;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-        }
-        
-        .btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
-        }
-        
-        .footer {
-            background: #1a1a1a;
-            color: white;
-            text-align: center;
-            padding: 40px 0;
-        }
-        
-        @media (max-width: 768px) {
-            .logo {
-                font-size: 2.5rem;
-            }
-            
-            .section-title {
-                font-size: 2rem;
-            }
-            
-            .feature-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .screenshots {
-                grid-template-columns: 1fr;
-            }
-        }
-        
-        .gradient-text {
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-    </style>
+    </script>
 </head>
-<body>
-    <div class="hero">
-        <div class="hero-content">
-            <div class="logo">RunRelease</div>
-            <div class="tagline">Transform Your Phone Habits Through Activity</div>
-            <div class="subtitle">Unlock your favorite apps only after completing GPS-tracked runs. Build healthier habits with intelligent app management.</div>
-            <div class="app-store-badge">In App Stores Soon</div>
+<body class="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 flex flex-col items-center justify-start py-8">
+    <div class="w-full max-w-xl px-4">
+        <!-- Header -->
+        <div class="text-center mb-8">
+            <h1 class="text-4xl font-bold text-gray-900 mb-2">RunRelease</h1>
+            <p class="text-lg text-gray-600">Unlock your favorite apps by completing a run</p>
         </div>
-        <div class="scroll-indicator">⬇</div>
+
+        <!-- Quick Guide Card -->
+        <div class="bg-white rounded-2xl shadow-lg p-6 mb-8 border border-blue-100">
+            <div class="flex items-center gap-2 mb-4">
+                <svg class="h-6 w-6 text-blue-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13 16h-1v-4h-1m1-4h.01M12 20.5C6.201 20.5 1 15.299 1 9.5S6.201-1.5 12-1.5 23 4.701 23 10.5 17.799 20.5 12 20.5z"/></svg>
+                <h2 class="text-xl font-semibold text-blue-700">How to Use RunRelease</h2>
+            </div>
+            <ol class="list-decimal list-inside space-y-3 text-gray-800 text-base">
+                <li><span class="font-semibold text-blue-700">Select apps</span> you want to lock until you finish your run.</li>
+                <li><span class="font-semibold text-blue-700">Set your daily running goal</span> (distance or destination).</li>
+                <li><span class="font-semibold text-blue-700">Start your run</span> and let RunRelease track your progress via GPS.</li>
+                <li><span class="font-semibold text-blue-700">Stay motivated</span>—locked apps remain inaccessible until you complete your goal.</li>
+                <li><span class="font-semibold text-blue-700">Finish your run</span> to instantly unlock your selected apps.</li>
+                <li><span class="font-semibold text-blue-700">Emergency access</span> is always available for essential apps and limited PIN unlocks.</li>
+            </ol>
+        </div>
+
+        <!-- Features Card -->
+        <div class="bg-white rounded-2xl shadow-lg p-6 mb-8 border border-indigo-100">
+            <div class="flex items-center gap-2 mb-4">
+                <svg class="h-6 w-6 text-indigo-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 17v-2a4 4 0 014-4h3m4 0a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                <h2 class="text-xl font-semibold text-indigo-700">Why RunRelease?</h2>
+            </div>
+            <ul class="space-y-2 text-gray-800 text-base">
+                <li>🔒 <span class="font-semibold">Real motivation</span>: Apps stay locked until you move.</li>
+                <li>📍 <span class="font-semibold">GPS tracking</span>: Accurate, privacy-first run tracking.</li>
+                <li>⚡ <span class="font-semibold">Emergency access</span>: Calls, messages, and maps always available.</li>
+                <li>🎯 <span class="font-semibold">Custom goals</span>: Set your own distance or destination.</li>
+                <li>🛡️ <span class="font-semibold">Safe & simple</span>: Designed for all ages, no technical jargon.</li>
+            </ul>
+        </div>
+
+        <!-- Call to Action Card -->
+        <div class="bg-gradient-to-r from-blue-600 to-indigo-600 rounded-2xl shadow-lg p-6 text-center mb-8">
+            <h2 class="text-2xl font-bold text-white mb-2">Ready to unlock your potential?</h2>
+            <p class="text-white mb-4">Download RunRelease and make every run count!</p>
+            <a href="#" class="inline-block bg-white text-blue-700 font-semibold px-6 py-2 rounded-lg shadow hover:bg-blue-50 transition">Get the App</a>
+        </div>
+
+        <!-- Footer -->
+        <footer class="text-center text-gray-400 text-sm mt-8">
+            &copy; 2024 RunRelease. All rights reserved.
+        </footer>
     </div>
-    
-    <div class="container">
-        <section class="section">
-            <h2 class="section-title">Revolutionary App Management</h2>
-            <p class="section-subtitle">RunRelease combines cutting-edge GPS tracking with smart app management to create a seamless experience that promotes physical activity.</p>
-            
-            <div class="feature-grid">
-                <div class="feature-card">
-                    <span class="feature-icon">🎯</span>
-                    <h3>Smart Scheduling</h3>
-                    <p>Set custom running schedules with flexible time windows, distance goals, and active days that fit your lifestyle perfectly.</p>
-                </div>
-                <div class="feature-card">
-                    <span class="feature-icon">📱</span>
-                    <h3>Smart App Control</h3>
-                    <p>Seamlessly manage which apps to lock and unlock based on your activity, integrating with your phone's built-in features.</p>
-                </div>
-                <div class="feature-card">
-                    <span class="feature-icon">📍</span>
-                    <h3>Precision GPS Tracking</h3>
-                    <p>Advanced GPS tracking ensures genuine physical activity with real-time route visualization and accurate distance measurement.</p>
-                </div>
-                <div class="feature-card">
-                    <span class="feature-icon">🔓</span>
-                    <h3>Intelligent Unlocking</h3>
-                    <p>Apps automatically unlock when you complete your running goal, providing instant gratification for your achievements.</p>
-                </div>
-                <div class="feature-card">
-                    <span class="feature-icon">🛡️</span>
-                    <h3>Emergency Access</h3>
-                    <p>Safety-first design with emergency unlock functionality for urgent situations while maintaining your health goals.</p>
-                </div>
-                <div class="feature-card">
-                    <span class="feature-icon">🎨</span>
-                    <h3>Modern Design</h3>
-                    <p>Beautiful, intuitive interface with card-based design, smooth animations, and premium user experience.</p>
-                </div>
-            </div>
-        </section>
-        
-        <section class="section">
-            <h2 class="section-title">App Screenshots</h2>
-            <p class="section-subtitle">Experience the premium design and intuitive user interface that makes RunRelease a joy to use.</p>
-            
-            <div class="screenshots">
-                <div class="screenshot-card">
-                    <div class="screenshot-placeholder">🏠 Home Screen<br>Beautiful card-based interface</div>
-                    <h3>Home Dashboard</h3>
-                    <p>Clean, modern home screen with quick access to all features</p>
-                </div>
-                <div class="screenshot-card">
-                    <div class="screenshot-placeholder">📍 Run Tracker<br>Real-time GPS tracking</div>
-                    <h3>GPS Run Tracker</h3>
-                    <p>Advanced tracking with route visualization and progress monitoring</p>
-                </div>
-                <div class="screenshot-card">
-                    <div class="screenshot-placeholder">�� App Management<br>Intuitive app selection</div>
-                    <h3>App Management</h3>
-                    <p>Easy selection and management of apps to lock/unlock</p>
-                </div>
-            </div>
-        </section>
-        
-        <section class="tech-section">
-            <div class="container">
-                <h2 class="section-title" style="color: white;">Built for Excellence</h2>
-                <p class="section-subtitle" style="color: rgba(255,255,255,0.8);">RunRelease is built with the latest iOS technologies for optimal performance and user experience.</p>
-                
-                <div class="tech-grid">
-                    <div class="tech-card">
-                        <h3>Smart App Management</h3>
-                        <p>Intelligent system that locks and unlocks apps based on your activity, helping you build better phone habits.</p>
-                    </div>
-                    <div class="tech-card">
-                        <h3>Advanced GPS</h3>
-                        <p>Precise location tracking that works even when the app is in the background, ensuring accurate run tracking.</p>
-                    </div>
-                    <div class="tech-card">
-                        <h3>Modern Interface</h3>
-                        <p>Smooth animations and responsive design that feels native to iOS, providing an intuitive user experience.</p>
-                    </div>
-                    <div class="tech-card">
-                        <h3>Privacy First</h3>
-                        <p>All your data stays on your device. No cloud storage required. Complete privacy and security.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-        
-        <section class="section">
-            <h2 class="section-title">Why Choose RunRelease</h2>
-            <div class="stats">
-                <div class="stat">
-                    <div class="stat-number">100%</div>
-                    <div class="stat-label">Privacy Focused</div>
-                </div>
-                <div class="stat">
-                    <div class="stat-number">24/7</div>
-                    <div class="stat-label">GPS Tracking</div>
-                </div>
-                <div class="stat">
-                    <div class="stat-number">∞</div>
-                    <div class="stat-label">Custom Schedules</div>
-                </div>
-                <div class="stat">
-                    <div class="stat-number">0</div>
-                    <div class="stat-label">Cloud Storage</div>
-                </div>
-            </div>
-        </section>
-    </div>
-    
-    <section class="cta-section">
-        <div class="container">
-            <h2 class="cta-title">Ready to Transform Your Habits?</h2>
-            <p class="cta-subtitle">Join the revolution in digital wellness with RunRelease</p>
-            <a href="leehoklam0609@gmail.com" class="btn">Contact Developer</a>
-        </div>
-    </section>
-    
-    <footer class="footer">
-        <div class="container">
-            <p>&copy; 2024 RunRelease. Built with ❤️ for better digital habits.</p>
-        </div>
-    </footer>
 </body>
 </html>
